@@ -15,5 +15,15 @@ export default async function searchRecipes(searchTerm) {
   };
 
   const response = await axios(options);
-  return response.data;
+
+  const recipes = response.data.feed.map((recipe) => {
+    return {
+      id: recipe['tracking-id'],
+      name: recipe.display.displayName,
+      image: recipe.display.images[0],
+      url: recipe.content.details.directionsUrl,
+      source: recipe.display.source.sourceDisplayName,
+    };
+  });
+  return recipes;
 }

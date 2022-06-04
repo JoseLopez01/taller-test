@@ -1,16 +1,22 @@
+import List from '@mui/material/List';
 import { styled } from '@mui/material/styles';
+import RecipeListItem from './RecipeListItem';
 
 const Container = styled('div')(() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
   marginTop: '20px',
   width: '100%',
-  backgroundColor: '#000',
 }));
 
-function RecipesList({ recipes }) {
-  return <Container>RecipesList</Container>;
+function RecipesList({ recipes = [] }) {
+  return (
+    <Container>
+      <List>
+        {recipes.map((recipe, i) => (
+          <RecipeListItem key={i} {...recipe} />
+        ))}
+      </List>
+    </Container>
+  );
 }
 
 export default RecipesList;
