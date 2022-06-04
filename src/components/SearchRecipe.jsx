@@ -10,7 +10,6 @@ const SearchContainer = styled('div')(() => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  marginTop: '20px',
   width: '100%',
 }));
 

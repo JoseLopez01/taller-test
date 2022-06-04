@@ -1,7 +1,7 @@
-import React from 'react';
+import Card from '@mui/material/Card';
 
 function RecipeCard() {
-  return <div>RecipeCard</div>;
+  return <Card>RecipeCard</Card>;
 }
 
 export default RecipeCard;
