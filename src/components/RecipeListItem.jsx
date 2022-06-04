@@ -19,13 +19,13 @@ const Container = styled(ListItem)(() => ({
   },
 }));
 
-function RecipeListItem({ name, image, source }) {
+function RecipeListItem({ name, image, source, setSelectedRecipe }) {
   return (
     <Container
       disableGutters
       divider
       secondaryAction={
-        <IconButton color="secondary">
+        <IconButton color="secondary" onClick={setSelectedRecipe}>
           <Save />
         </IconButton>
       }
