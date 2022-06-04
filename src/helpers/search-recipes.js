@@ -5,6 +5,8 @@ export default async function searchRecipes(searchTerm) {
     url: 'https://yummly2.p.rapidapi.com/feeds/search',
     params: {
       q: searchTerm,
+      start: 0,
+      maxResult: 10,
     },
     headers: {
       'X-RapidAPI-Host': 'yummly2.p.rapidapi.com',

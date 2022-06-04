@@ -11,12 +11,11 @@ const SearchContainer = styled('div')(() => ({
   flexDirection: 'column',
   alignItems: 'center',
   marginTop: '20px',
-  width: '50%',
+  width: '100%',
 }));
 
-function SearchRecipe() {
+function SearchRecipe({ setRecipes }) {
   const [search, setSearch] = useState('');
-  const [recipes, setRecipes] = useState([]);
 
   const handleChange = (event) => {
     setSearch(event.target.value);
@@ -36,9 +35,7 @@ function SearchRecipe() {
         setRecipes(recipes);
       });
     }
-  }, [search]);
-
-  console.log(recipes);
+  }, [search, setRecipes]);
 
   return (
     <SearchContainer>

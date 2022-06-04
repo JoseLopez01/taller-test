@@ -1,8 +1,9 @@
+import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-import SearchRecipe from './components/SearchRecipe';
+import RecipesForm from './components/RecipesForm';
 
 const theme = createTheme({
   palette: {
@@ -17,7 +18,11 @@ function App() {
         <Typography variant="h4" align="center">
           Recipes App
         </Typography>
-        <SearchRecipe />
+        <Grid container>
+          <Grid item xs={6}>
+            <RecipesForm />
+          </Grid>
+        </Grid>
       </Container>
     </ThemeProvider>
   );
