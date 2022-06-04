@@ -11,21 +11,31 @@ const Container = styled(Card)(() => ({
   boxShadow: '0px 6px 12px #E2E8EE',
 }));
 
-function RecipeCard() {
+function RecipeCard({ recipe }) {
+  const { id, name, image, url, source } = recipe;
+
+  const handleOnLink = () => {
+    window.open(url, '_blank');
+  };
+
+  const handleOnDelete = () => {
+    console.log('delete', id);
+  };
+
   return (
     <Container>
-      <CardHeader title="Recipe Title" subheader="Subheader" />
+      <CardHeader title={name} subheader={source} />
       <CardMedia
-        image="https://source.unsplash.com/random"
+        image={image}
         title="Image title"
         height="300"
         component="img"
       />
       <CardActions>
-        <IconButton color="error">
+        <IconButton color="error" onClick={handleOnDelete}>
           <Delete />
         </IconButton>
-        <IconButton color="info">
+        <IconButton color="info" onClick={handleOnLink}>
           <Link />
         </IconButton>
       </CardActions>
