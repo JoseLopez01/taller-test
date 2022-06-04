@@ -32,7 +32,6 @@ function SearchRecipe({ setRecipes }) {
   useEffect(() => {
     if (search) {
       searchRecipes(search).then((recipes) => {
-        console.log(recipes);
         setRecipes(recipes);
       });
     }
