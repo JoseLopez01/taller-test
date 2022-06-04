@@ -1,21 +1,14 @@
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
-import { ThemeProvider, createTheme, styled } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+import SearchRecipe from './components/SearchRecipe';
 
 const theme = createTheme({
   palette: {
     mode: 'light',
   },
 });
-
-const SearchContainer = styled('div')(() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  marginTop: '20px',
-  width: '50%',
-}));
 
 function App() {
   return (
@@ -24,15 +17,7 @@ function App() {
         <Typography variant="h4" align="center">
           Recipes App
         </Typography>
-        <SearchContainer>
-          <TextField
-            label="Search"
-            placeholder="Search a recipe"
-            variant="outlined"
-            color="secondary"
-            fullWidth
-          />
-        </SearchContainer>
+        <SearchRecipe />
       </Container>
     </ThemeProvider>
   );
