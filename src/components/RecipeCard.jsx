@@ -18,26 +18,40 @@ function RecipeCard({ recipe, showSave, onSave, onDelete }) {
   const handleOnLink = () => {
     window.open(url, '_blank');
   };
+
   return (
     <Container>
-      <CardHeader title={name} subheader={source} />
+      <CardHeader
+        title={name}
+        subheader={source}
+        data-testid="recipe-card-header"
+      />
       <CardMedia
         image={image}
         title="Image title"
         height="300"
         component="img"
+        data-testid="recipe-card-image"
       />
       <CardActions>
         <IconButton color="info" onClick={handleOnLink}>
           <Link />
         </IconButton>
         {!showSave && (
-          <IconButton color="error" onClick={onDelete}>
+          <IconButton
+            color="error"
+            onClick={onDelete}
+            data-testid="recipe-card-delete-button"
+          >
             <Delete />
           </IconButton>
         )}
         {showSave && (
-          <IconButton color="success" onClick={onSave}>
+          <IconButton
+            color="success"
+            onClick={onSave}
+            data-testid="recipe-card-save-button"
+          >
             <Save />
           </IconButton>
         )}
