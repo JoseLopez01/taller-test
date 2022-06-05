@@ -15,9 +15,14 @@ const Container = styled(ListItemButton)(() => ({
 
 function RecipeListItem({ name, image, source, setSelectedRecipe }) {
   return (
-    <Container disableGutters divider onClick={setSelectedRecipe}>
+    <Container
+      disableGutters
+      divider
+      onClick={setSelectedRecipe}
+      data-testid="recipe-list-item-container"
+    >
       <ListItemAvatar>
-        <Avatar alt={name} src={image} />
+        <Avatar alt={name} src={image} data-testid="recipe-list-item-avatar" />
       </ListItemAvatar>
       <ListItemText primary={name} secondary={source} />
     </Container>
