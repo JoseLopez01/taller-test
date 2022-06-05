@@ -11,7 +11,7 @@ const Container = styled('div')(() => ({
 function RecipesList({ setSelectedRecipe, recipes }) {
   return (
     <Container>
-      <List>
+      <List data-testid="recipes-list">
         {recipes.map((recipe, i) => (
           <RecipeListItem
             key={i}
