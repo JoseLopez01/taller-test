@@ -5,23 +5,19 @@ import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Delete from '@mui/icons-material/Delete';
 import Link from '@mui/icons-material/Link';
+import Save from '@mui/icons-material/Save';
 import { styled } from '@mui/material/styles';
 
 const Container = styled(Card)(() => ({
   boxShadow: '0px 6px 12px #E2E8EE',
 }));
 
-function RecipeCard({ recipe }) {
-  const { id, name, image, url, source } = recipe;
+function RecipeCard({ recipe, showSave, onSave, onDelete }) {
+  const { name, image, url, source } = recipe;
 
   const handleOnLink = () => {
     window.open(url, '_blank');
   };
-
-  const handleOnDelete = () => {
-    console.log('delete', id);
-  };
-
   return (
     <Container>
       <CardHeader title={name} subheader={source} />
@@ -32,12 +28,19 @@ function RecipeCard({ recipe }) {
         component="img"
       />
       <CardActions>
-        <IconButton color="error" onClick={handleOnDelete}>
-          <Delete />
-        </IconButton>
         <IconButton color="info" onClick={handleOnLink}>
           <Link />
         </IconButton>
+        {!showSave && (
+          <IconButton color="error" onClick={onDelete}>
+            <Delete />
+          </IconButton>
+        )}
+        {showSave && (
+          <IconButton color="success" onClick={onSave}>
+            <Save />
+          </IconButton>
+        )}
       </CardActions>
     </Container>
   );

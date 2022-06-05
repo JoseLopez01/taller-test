@@ -15,7 +15,7 @@ const SearchContainer = styled('div')(() => ({
   width: '100%',
 }));
 
-function SearchRecipe() {
+function SearchRecipe({ setSelectedRecipe }) {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [open, setOpen] = useState(false);
@@ -35,7 +35,7 @@ function SearchRecipe() {
   }, [debouncedSearch]);
 
   useEffect(() => {
-    if (search) {
+    if (search.length > 0) {
       searchRecipes(search).then((recipes) => {
         setSearchResults(recipes);
       });
@@ -49,10 +49,14 @@ function SearchRecipe() {
         open={open}
         onOpen={() => setOpen(true)}
         onClose={() => setOpen(false)}
-        isOptionEqualToValue={(option, value) => option.id === value}
         getOptionLabel={(option) => option.name}
+        filterOptions={(x) => x}
         options={searchResults}
         loading={loading}
+        onChange={(_, value) => {
+          setSearch('');
+          setSelectedRecipe(value);
+        }}
         renderInput={(params) => (
           <TextField
             {...params}

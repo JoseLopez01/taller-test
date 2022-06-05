@@ -1,16 +1,10 @@
 import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
-import Save from '@mui/icons-material/Save';
 import { styled } from '@mui/material/styles';
 
-const Container = styled(ListItem)(() => ({
-  '&:hover': {
-    backgroundColor: '#f5f5f5',
-    cursor: 'pointer',
-  },
+const Container = styled(ListItemButton)(() => ({
   '&:first-of-type': {
     borderRadius: '4px 4px 0 0',
   },
@@ -21,15 +15,7 @@ const Container = styled(ListItem)(() => ({
 
 function RecipeListItem({ name, image, source, setSelectedRecipe }) {
   return (
-    <Container
-      disableGutters
-      divider
-      secondaryAction={
-        <IconButton color="secondary" onClick={setSelectedRecipe}>
-          <Save />
-        </IconButton>
-      }
-    >
+    <Container disableGutters divider onClick={setSelectedRecipe}>
       <ListItemAvatar>
         <Avatar alt={name} src={image} />
       </ListItemAvatar>
